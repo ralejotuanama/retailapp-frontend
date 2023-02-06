@@ -1,0 +1,46 @@
+<mat-card>Ingrese los datos del cliente</mat-card>
+
+<form class="example-container" [formGroup]="form" #frmCliente="ngForm" (ngSubmit)="operar()">
+
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="ID" required formControlName="idCliente">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field class="example-full-width">            
+        <input matInput placeholder="Nombre" minlength="3" required formControlName="nombre">       
+        <small *ngIf="f.nombre.errors?.required && f.nombre.touched" class="invalido">Nombre es requerido</small>
+        <small *ngIf="f.nombre.errors?.minlength" class="invalido">El campo debe ser mayor a 3 caracteres</small>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">        
+        <input matInput placeholder="Apellido" required formControlName="apellido">
+        <small *ngIf="f.nombre.errors?.required" class="invalido"></small>    
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Email" required formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="DNI" required formControlName="dni" >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="fecha creacion" required formControlName="fechacreacion">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="fecha nacimiento" required formControlName="fechanacimiento">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmCliente.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Aceptar</span>
+    </button>
+    <button mat-raised-button color="accent" routerLink='/cliente' type="button">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+
+</form>
